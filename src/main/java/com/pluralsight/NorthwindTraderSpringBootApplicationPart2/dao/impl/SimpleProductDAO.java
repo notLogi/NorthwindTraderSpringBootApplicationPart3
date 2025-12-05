@@ -14,10 +14,10 @@ public class SimpleProductDAO implements IProductDAO {
 
     public SimpleProductDAO() {
         this.products = new ArrayList<>();
-        // Add some initial transactions
-        products.add(new Product(1, 150.75, "Amazon"));
-        products.add(new Product(2, 89.99, "Walmart"));
-        products.add(new Product(3, 200.00, "Best Buy"));
+        // Add some initial products
+        products.add(new Product(1,"Chips", 5, 23.20));
+        products.add(new Product(2,"Milk", 4, 10.23));
+        products.add(new Product(3,"Candy", 3, 24.20));
     }
 
     @Override
@@ -40,9 +40,9 @@ public class SimpleProductDAO implements IProductDAO {
     }
 
     @Override
-    public Product getProductById(int transactionId) {
+    public Product getProductById(int productId) {
         for (Product product : products) {
-            if (product.getProductId() == transactionId) {
+            if (product.getProductId() == productId) {
                 return product;
             }
         }
@@ -50,24 +50,24 @@ public class SimpleProductDAO implements IProductDAO {
     }
 
     @Override
-    public void update(int transactionId, Product product) {
-        int index = getProductIndex(transactionId);
+    public void update(int productId, Product product) {
+        int index = getProductIndex(productId);
         if (index != -1) {
             products.set(index, product);
         }
     }
 
     @Override
-    public void delete(int transactionId) {
-        int index = getProductIndex(transactionId);
+    public void delete(int productId) {
+        int index = getProductIndex(productId);
         if (index != -1) {
             products.remove(index);
         }
     }
 
-    private int getProductIndex(int transactionId) {
+    private int getProductIndex(int productId) {
         for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getProductId() == transactionId) {
+            if (products.get(i).getProductId() == productId) {
                 return i;
             }
         }

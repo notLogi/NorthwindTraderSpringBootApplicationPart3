@@ -16,7 +16,7 @@ public class NorthwindTraderSpringBootApplicationPart2 {
         ApplicationContext context = SpringApplication.run(NorthwindTraderSpringBootApplicationPart2.class, args);
 
 /*        SimpleProductDAO simpleProductDAO = new SimpleProductDAO();
-        ProductService transactionService = new ProductService(simpleProductDAO);*/
+        ProductService productService = new ProductService(simpleProductDAO);*/
 
         ProductService productService = context.getBean(ProductService.class);
 
@@ -64,25 +64,28 @@ public class NorthwindTraderSpringBootApplicationPart2 {
     }
 
     private static void listProducts(ProductService productService) {
-        // This method retrieves and displays a list of all transactions.
+        // This method retrieves and displays a list of all products.
         System.out.println("========== List of Products ==========");
         List<Product> products = productService.getAllProducts();
         for (Product product : products) {
-            System.out.println(product); // Prints each transaction.
+            System.out.println(product); // Prints each product.
         }
         System.out.println(); // Adds an empty line for better readability.
     }
 
     private static void addProduct(Scanner scanner, ProductService productService) {
-        // This method adds a new transaction based on user input.
-        System.out.print("Enter transaction amount: ");
-        double amount = scanner.nextDouble();
-        scanner.nextLine(); // Consumes the newline character.
-        System.out.print("Enter vendor name: ");
-        String vendor = scanner.nextLine();
+        // This method adds a new product based on user input.
+        System.out.print("Product name: ");
+        String productName = scanner.nextLine();
+        System.out.print("Enter the category ID: ");
+        int categoryId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter unit price: ");
+        double unitPrice = scanner.nextDouble();
+        scanner.nextLine();
 
-        Product product = new Product(amount, vendor);
-        Product newProduct = productService.addProduct(product); // Adds the transaction to the service.
+        Product product = new Product(productName, categoryId, unitPrice);
+        Product newProduct = productService.addProduct(product); // Adds the product to the service.
 
         System.out.println("Product added successfully.\n");
         System.out.println(newProduct);
@@ -90,58 +93,62 @@ public class NorthwindTraderSpringBootApplicationPart2 {
     }
 
     private static void updateProduct(Scanner scanner, ProductService productService) {
-        // This method updates an existing transaction based on user input.
-        System.out.print("Enter the transaction ID to update: ");
-        int transactionId = scanner.nextInt();
+        // This method updates an existing product based on user input.
+        System.out.print("Enter the product ID to update: ");
+        int productId = scanner.nextInt();
         scanner.nextLine(); // Consumes the newline character.
 
-        Product existingProduct = productService.getProductById(transactionId);
+        Product existingProduct = productService.getProductById(productId);
         if (existingProduct == null) {
             System.out.println("Product not found.\n");
             return;
         }
 
-        System.out.print("Enter new transaction amount: ");
-        double amount = scanner.nextDouble();
+        System.out.print("Enter the product name: ");
+        String productName = scanner.nextLine();
         scanner.nextLine(); // Consumes the newline character.
         System.out.print("Enter new vendor name: ");
-        String vendor = scanner.nextLine();
+        int categoryId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter the new unit price: ");
+        double unitPrice = scanner.nextDouble();
+        scanner.nextLine();
 
-        Product updatedProduct = new Product(transactionId, amount, vendor);
-        productService.updateProduct(transactionId, updatedProduct); // Updates the transaction.
+        Product updatedProduct = new Product(productId, productName, categoryId, unitPrice);
+        productService.updateProduct(productId, updatedProduct); // Updates the product.
 
         System.out.println("Product updated successfully.\n");
     }
 
     private static void deleteProduct(Scanner scanner, ProductService productService) {
-        // This method deletes a transaction based on the transaction ID provided by the user.
-        System.out.print("Enter the transaction ID to delete: ");
-        int transactionId = scanner.nextInt();
+        // This method deletes a product based on the product ID provided by the user.
+        System.out.print("Enter the product ID to delete: ");
+        int productId = scanner.nextInt();
         scanner.nextLine(); // Consumes the newline character.
 
-        Product existingProduct = productService.getProductById(transactionId);
+        Product existingProduct = productService.getProductById(productId);
         if (existingProduct == null) {
             System.out.println("Product not found.\n");
             return;
         }
 
-        productService.deleteProduct(transactionId); // Deletes the transaction.
+        productService.deleteProduct(productId); // Deletes the product.
 
         System.out.println("Product deleted successfully.\n");
     }
 
     private static void searchProduct(Scanner scanner, ProductService productService) {
-        // This method searches for a transaction based on the transaction ID provided by the user.
-        System.out.print("Enter the transaction ID to search: ");
-        int transactionId = scanner.nextInt();
+        // This method searches for a product based on the product ID provided by the user.
+        System.out.print("Enter the product ID to search: ");
+        int productId = scanner.nextInt();
         scanner.nextLine(); // Consumes the newline character.
 
-        Product product = productService.getProductById(transactionId);
+        Product product = productService.getProductById(productId);
         if (product == null) {
             System.out.println("Product not found.\n");
         } else {
             System.out.println("========== Product Details ==========");
-            System.out.println(product); // Displays the details of the found transaction.
+            System.out.println(product); // Displays the details of the found product.
             System.out.println();
         }
     }

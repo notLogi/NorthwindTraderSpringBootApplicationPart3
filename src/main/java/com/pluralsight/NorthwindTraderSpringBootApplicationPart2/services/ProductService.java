@@ -9,12 +9,12 @@ import java.util.List;
 
 /**
  * ProductService provides a layer of abstraction between the controller and the data access object (DAO).
- * It contains the business logic to interact with transactions and uses the IProductDAO for database operations.
+ * It contains the business logic to interact with products and uses the IProductDAO for database operations.
  */
 @Component
 // Indicates that this class is a Spring component. It will be automatically detected and instantiated by Spring.
 public class ProductService {
-    private IProductDAO ProductDAO; // Interface to data access object for transactions.
+    private IProductDAO ProductDAO; // Interface to data access object for products.
 
     /**
      * Autowired constructor for dependency injection.
@@ -28,49 +28,49 @@ public class ProductService {
     }
 
     /**
-     * Adds a new transaction.
+     * Adds a new product.
      *
-     * @param product the transaction to add.
-     * @return the new transaction
+     * @param product the product to add.
+     * @return the new product
      */
     public Product addProduct(Product product) {
         return ProductDAO.add(product);
     }
 
     /**
-     * Retrieves all transactions.
+     * Retrieves all products.
      *
-     * @return a list of all transactions.
+     * @return a list of all products.
      */
     public List<Product> getAllProducts() {
         return ProductDAO.getAllProducts();
     }
 
     /**
-     * Retrieves a transaction by its ID.
+     * Retrieves a product by its ID.
      *
-     * @param transactionId the ID of the transaction.
-     * @return the transaction with the specified ID, or null if not found.
+     * @param productId the ID of the product.
+     * @return the product with the specified ID, or null if not found.
      */
-    public Product getProductById(int transactionId) {
-        return ProductDAO.getProductById(transactionId);
+    public Product getProductById(int productId) {
+        return ProductDAO.getProductById(productId);
     }
 
     /**
-     * Updates an existing transaction.
+     * Updates an existing product.
      *
-     * @param product the transaction with updated details.
+     * @param product the product with updated details.
      */
-    public void updateProduct(int transactionId, Product product) {
-        ProductDAO.update(transactionId, product);
+    public void updateProduct(int productId, Product product) {
+        ProductDAO.update(productId, product);
     }
 
     /**
-     * Deletes a transaction.
+     * Deletes a product.
      *
-     * @param transactionId The ID of the transaction to delete.
+     * @param productId The ID of the product to delete.
      */
-    public void deleteProduct(int transactionId) {
-        ProductDAO.delete(transactionId);
+    public void deleteProduct(int productId) {
+        ProductDAO.delete(productId);
     }
 }
