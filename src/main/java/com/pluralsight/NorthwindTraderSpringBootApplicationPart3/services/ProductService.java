@@ -1,7 +1,7 @@
-package com.pluralsight.NorthwindTraderSpringBootApplicationPart2.services;
+package com.pluralsight.NorthwindTraderSpringBootApplicationPart3.services;
 
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart2.dao.interfaces.IProductDAO;
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart2.models.Product;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.dao.interfaces.IProductDAO;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

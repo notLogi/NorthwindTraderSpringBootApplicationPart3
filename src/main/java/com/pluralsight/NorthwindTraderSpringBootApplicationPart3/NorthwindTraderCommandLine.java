@@ -1,25 +1,22 @@
-package com.pluralsight.NorthwindTraderSpringBootApplicationPart2;
+package com.pluralsight.NorthwindTraderSpringBootApplicationPart3;
 
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart2.models.Product;
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart2.services.ProductService;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.models.Product;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
 
-@SpringBootApplication
-public class NorthwindTraderSpringBootApplicationPart2 {
+@Component
+public class NorthwindTraderCommandLine implements CommandLineRunner {
 
-    public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(NorthwindTraderSpringBootApplicationPart2.class, args);
+    @Autowired
+    private ProductService productService;
 
-/*        SimpleProductDAO simpleProductDAO = new SimpleProductDAO();
-        ProductService productService = new ProductService(simpleProductDAO);*/
-
-        ProductService productService = context.getBean(ProductService.class);
-
+    @Override
+    public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in); // Scanner for reading user input.
         int choice;
         do {

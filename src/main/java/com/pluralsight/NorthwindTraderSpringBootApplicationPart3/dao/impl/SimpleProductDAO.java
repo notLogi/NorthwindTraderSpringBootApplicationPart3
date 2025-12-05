@@ -1,8 +1,8 @@
-package com.pluralsight.NorthwindTraderSpringBootApplicationPart2.dao.impl;
+package com.pluralsight.NorthwindTraderSpringBootApplicationPart3.dao.impl;
 
 
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart2.dao.interfaces.IProductDAO;
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart2.models.Product;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.dao.interfaces.IProductDAO;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.models.Product;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
