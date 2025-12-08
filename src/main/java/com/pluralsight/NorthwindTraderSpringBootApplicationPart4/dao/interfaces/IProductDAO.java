@@ -1,6 +1,6 @@
-package com.pluralsight.NorthwindTraderSpringBootApplicationPart3.dao.interfaces;
+package com.pluralsight.NorthwindTraderSpringBootApplicationPart4.dao.interfaces;
 
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.models.Product;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart4.models.Product;
 
 import java.util.List;
 

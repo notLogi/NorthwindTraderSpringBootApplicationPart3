@@ -1,4 +1,4 @@
-package com.pluralsight.NorthwindTraderSpringBootApplicationPart3.models;
+package com.pluralsight.NorthwindTraderSpringBootApplicationPart4.models;
 
 public class Product {
     private int productId;

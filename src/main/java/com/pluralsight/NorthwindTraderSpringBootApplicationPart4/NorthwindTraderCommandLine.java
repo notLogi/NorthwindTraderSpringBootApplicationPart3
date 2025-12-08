@@ -1,7 +1,7 @@
-package com.pluralsight.NorthwindTraderSpringBootApplicationPart3;
+package com.pluralsight.NorthwindTraderSpringBootApplicationPart4;
 
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.models.Product;
-import com.pluralsight.NorthwindTraderSpringBootApplicationPart3.services.ProductService;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart4.models.Product;
+import com.pluralsight.NorthwindTraderSpringBootApplicationPart4.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -103,8 +103,7 @@ public class NorthwindTraderCommandLine implements CommandLineRunner {
 
         System.out.print("Enter the product name: ");
         String productName = scanner.nextLine();
-        scanner.nextLine(); // Consumes the newline character.
-        System.out.print("Enter new vendor name: ");
+        System.out.print("Enter new category: ");
         int categoryId = scanner.nextInt();
         scanner.nextLine();
         System.out.println("Enter the new unit price: ");
